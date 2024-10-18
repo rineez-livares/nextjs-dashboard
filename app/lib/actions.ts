@@ -73,6 +73,7 @@ export async function deleteInvoice(id: string) {
   try {
     await sql`DELETE FROM invoices WHERE id = ${id}`;
   } catch (error) {
+    console.log(error);
     return {
       message: 'Database Error: Failed to Delete Invoice.',
     };
@@ -85,6 +86,7 @@ export async function markPaidInvoice(id: string) {
   try{
   await sql`UPDATE invoices SET status='paid' WHERE id = ${id}`;
 } catch (error) {
+  console.log(error);
   return {
     message: 'Database Error: Failed to Mark Invoice as Paid.',
   };
